@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>My First Heading</h1>
+<p>My first paragraph.</p>
+<input id="countryname"></input>
+<button id="countrySearchBtn">Search</button>
+
+<h2 id="country"></h2>
+<h3 id="capital"></h3>
+<h3 id="language"></h3>
+<h3 id="currency"></h3>
+<h3 id="population"></h3>
+<image id="flag"></image>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+
+$("#countrySearchBtn").on("click", function(){
+var country = $("#countryname").val();
+var queryURL = "https://restcountries.eu/rest/v2/name/" + country
+
+$.ajax({
+        url: queryURL,
+        method: "GET"
+      }).then(function(response) {
+        console.log(response)
+        $("#country").text("Capital: " + response[0].name)
+        $("#capital").text("Capital: " + response[0].capital)
+        $("#language").text("Official Language Spoken: " + response[0].languages[0].name)
+        $("#currency").text("Currency: " + response[0].currencies[0].name + " " 
+                                    + response[0].currencies[0].symbol + " " 
+                                    + response[0].currencies[0].code)
+         $("#population").text("Population: " +  response[0].population)
+        $("#flag").attr("src", response[0].flag)
+        $("#flag").css("height", "60px", "width","60px")
+      })
+
+
+      var queryURL2 = "https://rest.bandsintown.com/c/london-england?app_id=codingbootcamp"
+      $.ajax({
+        url: queryURL2,
+        method: "GET"
+      }).then(function(response) {
+          console.log(response)
+
+
+
+
+          
+      })
+    })
+
+    
+
+    </script>
+</body>
+</html>
