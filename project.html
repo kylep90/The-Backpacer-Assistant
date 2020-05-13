@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>The Backpacker Assistant!</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  </head>
+  <body>
+    <div class="hero is-primary">
+        <div class="container">
+            <h1 class="title">
+                 Hello World
+            </h1>
+            <p class="title">
+            WELCOME TO THE <strong>BACKPACKER ASSISTANT</strong>!
+            </p>
+         </div>
+         <input id="countrypics"></input>
+         
+    </div>
+
+<div class="container">
+    <div class="hero-body">
+        <section class="subtitle">
+            <h1>SEARCH YOUR COUNTRY INFORMATION HERE</h1>
+        </section>
+        <input id="countryname"></input>
+<button id="countrySearchBtn">Search Now</button>
+
+<h2 id="country"></h2>
+<h3 id="capital"></h3>
+<h3 id="language"></h3>
+<h3 id="currency"></h3>
+<h3 id="population"></h3>
+<image id="flag"></image>
+
+    </div>
+    
+    
+    <section>
+        <h1 class="subtitle">
+            MUSTS FOR A BACKPACKER
+        </h1>
+    <div class="columns">
+        <div class="column">
+            <div class="card">
+                <div class="card-content">
+                    <h2 class="title">API</h2> 
+                </div>
+                <footer class="card-footer">
+                    <div class="card-footer-item">
+                        <a href="#" id="button2">BUTTON 1</a>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    
+
+        <div class="column">
+            <div class="card">
+                <div class="card-content">
+                    <h2 class="title">API</h2> 
+                </div>
+                <footer class="card-footer">
+                    <div class="card-footer-item">
+                        <a href="#" id="button2">BUTTON 1</a>
+                    </div>
+                </footer>
+            </div>
+        </div>
+        
+
+        <div class="column">
+            <div class="card">
+                <div class="card-content">
+                    <h2 class="title">API</h2> 
+                </div>
+                <footer class="card-footer">
+                    <div class="card-footer-item">
+                        <a href="#" id="button3">BUTTON 2</a>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    </section>
+</div>
+   
+              
+
+        
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+$("#countrySearchBtn").on("click", function(){
+var country = $("#countryname").val();
+var queryURL = "https://restcountries.eu/rest/v2/name/" + country
+
+$.ajax({
+    url: queryURL,
+    method: "GET"
+  }).then(function(response) {
+    console.log(response)
+    $("#country").text("Country: " + response[0].name)
+    $("#capital").text("Capital: " + response[0].capital)
+    $("#language").text("Official Language Spoken: " + response[0].languages[0].name)
+    $("#currency").text("Currency: " + response[0].currencies[0].name + " " 
+                                + response[0].currencies[0].symbol + " " 
+                                + response[0].currencies[0].code)
+     $("#population").text("Population: " +  response[0].population)
+    $("#flag").attr("src", response[0].flag)
+    $("#flag").css("height", "60px", "width","60px")
+
+  })
+  
+})
+</script>
+
+  </body>
+</html>
