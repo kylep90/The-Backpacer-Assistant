@@ -1,124 +1,159 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>The Backpacker Assistant!</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
-    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-  </head>
-  <body>
-    <div class="hero is-primary">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>The Backpacker Assistant!</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
+        <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    </head>
+    <body>
+        <div class="hero is-primary">
+            <div class="container">
+                <h1 class="title">
+                    Hello World
+                </h1>
+                <p class="title">
+                    WELCOME TO THE <strong>BACKPACKER ASSISTANT</strong>!
+                </p>
+            </div>
+            <div id="countrypics"></div>
+        </div>
         <div class="container">
-            <h1 class="title">
-                 Hello World
-            </h1>
-            <p class="title">
-            WELCOME TO THE <strong>BACKPACKER ASSISTANT</strong>!
-            </p>
-         </div>
-         <input id="countrypics"></input>
-         
-    </div>
-
-<div class="container">
-    <div class="hero-body">
-        <section class="subtitle">
-            <h1>SEARCH YOUR COUNTRY INFORMATION HERE</h1>
-        </section>
-        <input id="countryname"></input>
-<button id="countrySearchBtn">Search Now</button>
-
-<h2 id="country"></h2>
-<h3 id="capital"></h3>
-<h3 id="language"></h3>
-<h3 id="currency"></h3>
-<h3 id="population"></h3>
-<image id="flag"></image>
-
-    </div>
-    
-    
-    <section>
-        <h1 class="subtitle">
-            MUSTS FOR A BACKPACKER
-        </h1>
-    <div class="columns">
-        <div class="column">
-            <div class="card">
-                <div class="card-content">
-                    <h2 class="title">API</h2> 
-                </div>
-                <footer class="card-footer">
-                    <div class="card-footer-item">
-                        <a href="#" id="button2">BUTTON 1</a>
-                    </div>
-                </footer>
+            <div class="hero-body">
+                <section class="subtitle">
+                    <h1>SEARCH YOUR COUNTRY INFORMATION HERE</h1>
+                </section>
+                <input id="countryname"></input>
+                <button id="countrySearchBtn">Search Now</button>
+                <h2 id="country"></h2>
+                <h3 id="capital"></h3>
+                <h3 id="language"></h3>
+                <h3 id="currency"></h3>
+                <h3 id="population"></h3>
+                <image id="flag"></image>
             </div>
-        </div>
-    
-
-        <div class="column">
-            <div class="card">
-                <div class="card-content">
-                    <h2 class="title">API</h2> 
-                </div>
-                <footer class="card-footer">
-                    <div class="card-footer-item">
-                        <a href="#" id="button2">BUTTON 1</a>
+            <section>
+                <h1 class="subtitle">
+                    MUSTS FOR A BACKPACKER
+                </h1>
+                <div class="columns">
+                    <div class="column">
+                        <div class="card">
+                            <div class="card-content" <h2 class="title">API</h2>
+                            </div>
+                        </div>
                     </div>
-                </footer>
-            </div>
-        </div>
-        
-
-        <div class="column">
-            <div class="card">
-                <div class="card-content">
-                    <h2 class="title">API</h2> 
-                </div>
-                <footer class="card-footer">
-                    <div class="card-footer-item">
-                        <a href="#" id="button3">BUTTON 2</a>
+                    <div class="column">
+                        <div class="card">
+                            <div class="card-content" <h2 class="title">API</h2>
+                            </div>
+                        </div>
                     </div>
-                </footer>
-            </div>
+                    <div class="column">
+                        <div class="card">
+                            <div class="card-content" <h2 class="title">API</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
-    </div>
-    </div>
-    </div>
-    </section>
-</div>
-   
-              
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            var UnsplashSource = {
+                getImageUrl: function( pSize, pKeywords ){
+                    // Generate a URL for Unsplash Source using the size
+                    lImageURL = 'https://source.unsplash.com/' + encodeURIComponent( pSize )  + '/?';
+                    // Travers the keywords array and add them separated by comma to the URL
+                    for ( var i = 0; i < pKeywords.length; i++ ){
+                        // If this eciond or greaywtord hen add a comma
+                        if ( i > 0 ){
+                            lImageURL = lImageURL + ',';
+                        }
 
-        
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script type="text/javascript">
+                        // Add the keyword URL encoded for t not to cause problems if it has
+                        // special characters
+                        lImageURL = lImageURL + encodeURIComponent( pKeywords[ i ] );
+                    };
 
-$("#countrySearchBtn").on("click", function(){
-var country = $("#countryname").val();
-var queryURL = "https://restcountries.eu/rest/v2/name/" + country
+                    // !! I found that when you use multiple images with
+                    // !! Unsplash Source you end up getting the same image
+                    // !! multiple times, I looked over the internet and found
+                    // !! the following link: 
+                    // !! https://github.com/unsplash/unsplash-source-js/issues/9
+                    // !! According to it the reason is that the browser caches
+                    // !! the request and it retrieves the files from the
+                    // !! browser cache. The comments in there recommends to add
+                    // !! a random number to the URL as `?sip=<RANDOM>` to get
+                    // !! rid of this error
+                    lImageURL = lImageURL + '&sip=' + encodeURIComponent( Math.random() );
 
-$.ajax({
-    url: queryURL,
-    method: "GET"
-  }).then(function(response) {
-    console.log(response)
-    $("#country").text("Country: " + response[0].name)
-    $("#capital").text("Capital: " + response[0].capital)
-    $("#language").text("Official Language Spoken: " + response[0].languages[0].name)
-    $("#currency").text("Currency: " + response[0].currencies[0].name + " " 
-                                + response[0].currencies[0].symbol + " " 
-                                + response[0].currencies[0].code)
-     $("#population").text("Population: " +  response[0].population)
-    $("#flag").attr("src", response[0].flag)
-    $("#flag").css("height", "60px", "width","60px")
+                    console.log( lImageURL );
 
-  })
-  
-})
-</script>
+                    return lImageURL;
+                },
+                createImage: function( pSize, pKeywords ){
+                    // Create a jQuery image element
+                    return $( '<img>' )
+                        // Add the first keyword to the alt attribute for accessibility
+                        .attr( 'alt', pKeywords[ 0 ] )
+                        // Add the generated URL as the src
+                        .attr( 'src', this.getImageUrl( pSize, pKeywords ) );
+                }
+            };
 
-  </body>
+            $( document ).ready( function(){
+                $( "#countrySearchBtn" )
+                    .on( "click", function( pEvent ){
+                        var lCountry = $( "#countryname" ).val();
+                        var lQueryURL = "https://restcountries.eu/rest/v2/name/" + lCountry;
+                        var lNumberOfImages = 3;
+
+                        $.ajax({
+                            url: lQueryURL,
+                            method: "GET"
+                        })
+                            .then( function( pResponse ) {
+                                //console.log( pResponse );
+
+                                $( "#country" )
+                                    .text( "Country: " + pResponse[0].name );
+                                $("#capital")
+                                    .text( "Capital: " + pResponse[0].capital );
+                                $( "#language" )
+                                    .text(
+                                        "Official Language Spoken: "
+                                            + pResponse[0].languages[0].name
+                                    );
+                                $( "#currency" )
+                                    .text(
+                                        "Currency: " + pResponse[0].currencies[0].name + " " 
+                                            + pResponse[0].currencies[0].symbol + " " 
+                                            + pResponse[0].currencies[0].code
+                                    );
+                                $( "#population" )
+                                    .text( "Population: " +  pResponse[0].population );
+                                $( "#flag" )
+                                    .attr( "src", pResponse[0].flag );
+                                $( "#flag" )
+                                    .css( {
+                                        height: '60px',
+                                        width: '60px'
+                                    } );
+
+                                $( '#countrypics' )
+                                    .empty();
+                                for ( var i = 0; i < lNumberOfImages; i++ ){
+                                    $( '#countrypics' )
+                                        .append(
+                                            UnsplashSource.createImage( '800x600', [ pResponse[0].name, pResponse[0].capital, 'landmark' ] )
+                                        )
+                                }
+                            });
+                    })
+            } );
+        </script>
+    </body>
 </html>
+
