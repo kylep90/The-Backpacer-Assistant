@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<body>
+<!-- Dropdown Menu  -->
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </head>
+
+<h1>My First Heading</h1>
+<p>My first paragraph.</p>
+<input id="countryname"></input>
+<button id="countrySearchBtn">Search</button>
+<br>
+
+<div style="float: left; background-color: aqua; padding:auto">
+<h2 id="country"></h2>
+<h3 id="capital"></h3>
+<h3 id="language"></h3>
+<h3 id="currency"></h3>
+<h3 id="population"></h3>
+<image id="flag"></image>
+</div>
+
+<div id="cityinfo" style="float: left; background-color: rgb(113, 124, 124);">
+<h2 id="cityinfolist"></h2>
+<h3 id="city1"></h3>
+<h4 id="city1info"></h4>
+<h3 id="city2"></h3>
+<h4 id="city2info"></h4>
+<h3 id="city3"></h3>
+<h4 id="city3info"></h4>
+<h3 id="city4"></h3>
+<h4 id="city4info"></h4>
+<h3 id="city5"></h3>
+<h4 id="city5info"></h4>
+
+</div>
+City Search
+<div id="local" style="float: left; background-color: rgb(113, 124, 124);">
+  <h2 id="localinfo"></h2>
+
+  
+  </div>
+
+<!-- Dropdown Menu -->
+
+<div class="container">
+  <h2>Simplify your search</h2>
+  <p>Choose a category to find more information</p>                             
+  <div class="dropdown">
+    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Options
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      <!-- Character -->
+        <a class="test" tabindex="-1" href="#">Character <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a id="character-Gay_friendly" href="#">Gay Friendly</a></li>
+          <li><a id="character-Kid_friendly" href="#">Kid Friendly</a></li>
+          <li><a id="character-Popular_with_locals" href="#">Popular with locals</a></li>
+        </ul>
+      <!-- To Do  -->
+        <a class="test" tabindex="-1"  href="#">To Do <span class="caret"></span></a>
+        <ul class="dropdown-menu a">
+          <li><a href="#" id="beaches">Beaches</a></li>
+          <li><a href="#" id="shopping">Shopping</a></li> 
+          <li><a href="#" id="sports">Sports</a></li>
+          <li><a href="#" id="wellness">Wellness</a></li> 
+        </ul>
+     <!-- Food and Drink  -->
+      <a class="test" tabindex="-1" href="#">Food and Drink <span class="caret"></span></a>
+      <ul class="dropdown-menu a">
+        <li><a href="#" id="beaches">All</a></li>
+        <li><a class="test" tabindex="-1" href="#">Type of Establishment<span class="caret"></span></a></li>
+        <ul class="dropdown-submenu a">
+          <li><a href="#" id="eatingout_establishment.breweries">Breweries</a></li>
+          <li><a href="#" id="distilleries">Distilleries</a></li>
+          <li><a href="#" id="bakery">Bakery</a></li>
+          <li><a href="#" id="shopping">Bar</a></li> 
+          <li><a href="#" id="beaches">Restaurant</a></li>
+          <li><a href="#" id="beaches">Cafe</a></li>
+          <li><a href="#" id="shopping">Wineries</a></li> 
+        </ul>
+  </ul>
+
+      <!-- Accomodation  -->
+      <a class="test" tabindex="-1"  href="#">Accomodation <span class="caret"></span></a>
+      <ul class="dropdown-menu a">
+        <li><a href="#" id="hotels">Accomodation</a></li> 
+      </ul>
+
+      <!-- Nightlife  -->
+      <a class="test" tabindex="-1"  href="#">Nightlife <span class="caret"></span></a>
+      <ul class="dropdown-menu a">
+        <li><a href="#" id="cinema">Cinema</a></li> 
+        <li><a href="#" id="drinks">Drinks</a></li> 
+        <li><a href="#" id="dancing">Dancing</a></li> 
+        <li><a href="#" id="redlight">Adults Only</a></li> 
+      </ul>
+
+      <!-- Practicalities  -->
+      <a class="test" tabindex="-1"  href="#">Essentials <span class="caret"></span></a>
+      <ul class="dropdown-menu a">
+        <li><a href="#" id="groceries">Groceries</a></li> 
+        <li><a href="#" id="health">Health</a></li> 
+        <li><a href="#" id="money">Money</a></li> 
+        <li><a href="#" id="safety">Safety</a></li> 
+        <li><a href="#" id="touristinfo">Tourist Info</a></li> 
+        <li><a href="#" id="transport">Transport</a></li> 
+        <li><a href="#" id="visas">Visas</a></li> 
+      </ul>
+
+      <!-- Sightseeing  -->
+      <a class="test" tabindex="-1"  href="#">Sightseeing <span class="caret"></span></a>
+      <ul class="dropdown-menu a">
+        <li><a href="#" id="sightseeing">All</a></li> 
+      </ul>
+
+      <!-- Sightseeing  -->
+      <a class="test" tabindex="-1"  href="#">Tours <span class="caret"></span></a>
+      <ul class="dropdown-menu a">
+        <li><a href="#" id="tours">All</a></li> 
+      </ul>
+
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+
+//DropDown
+$(document).ready(function(){
+  $('.dropdown a.test').on("click", function(e){
+    $(this).next('ul').toggle();
+    e.stopPropagation();
+    e.preventDefault();
+  });
+});
+
+//Sub Dropdown
+$(document).ready(function(){
+  $('.dropdown-submenu a.test').on("click", function(e){
+    $(this).next('ul').toggle();
+    e.stopPropagation();
+    e.preventDefault();
+  });
+});
+
+$("#countrySearchBtn").on("click", function(){
+var country = $("#countryname").val();
+var queryURL = "https://restcountries.eu/rest/v2/name/" + country
+
+$.ajax({
+        url: queryURL,
+        method: "GET"
+      }).then(function(response) {
+        console.log(response)
+        $("#country").text("Capital: " + response[0].name)
+        $("#capital").text("Capital: " + response[0].capital)
+        $("#language").text("Official Language Spoken: " + response[0].languages[0].name)
+        $("#currency").text("Currency: " + response[0].currencies[0].name + " " 
+                                    + response[0].currencies[0].symbol + " " 
+                                    + response[0].currencies[0].code)
+         $("#population").text("Population: " +  response[0].population)
+        $("#flag").attr("src", response[0].flag)
+        $("#flag").css("height", "60px", "width","60px")
+      })
+
+
+var queryURL2 = "https://www.triposo.com/api/20200405/location.json?part_of=" + country + "&tag_labels=city&count=10&fields=id,name,score,snippet&order_by=-score&account=EBIJUYBE&token=x12w6bi7kpp880qub7zb7ud5wdsnojzz"
+
+$.ajax({
+        url: queryURL2,
+        method: "GET"
+      }).then(function(response) {
+        console.log(response)
+
+        $("#cityinfolist").text("Top 5 cities in " + country)
+        $("#city1").text(response.results[0].name)
+        $("#city1info").text(response.results[0].snippet)
+
+        $("#city2").text(response.results[1].name)
+        $("#city2info").text(response.results[1].snippet)
+
+        $("#city3").text(response.results[2].name)
+        $("#city3info").text(response.results[2].snippet)
+
+        $("#city4").text(response.results[3].name)
+        $("#city4info").text(response.results[3].snippet)
+
+        $("#city5").text(response.results[4].name)
+        $("#city5info").text(response.results[4].snippet)
+    })
+
+
+        var citySearch = $("<input>")
+        var citySearchBtn = $("<button>")
+        citySearchBtn.attr("id", "citySearchBtn")
+        citySearchBtn.text("City Search")
+
+        $("#cityinfo").append(citySearch)
+        $("#cityinfo").append(citySearchBtn)
+
+        function getTag(option){
+          console.log(option);
+  
+  var citySearchValue = citySearch.val()
+      // var queryURL3 = "https://www.triposo.com/api/20200405/poi.json?location_id=" + citySearchValue + "&tag_labels=character-Popular_with_locals&tag_labels=eatingout&order_by=-character-Popular_with_locals_score&fields=id,name,snippet&account=EBIJUYBE&token=x12w6bi7kpp880qub7zb7ud5wdsnojzz"
+      var queryURL3 = "https://www.triposo.com/api/20200405/poi.json?location_id=" + citySearchValue + "&tag_labels=" + option +"&order_by=-score&fields=id,name,snippet&account=EBIJUYBE&token=x12w6bi7kpp880qub7zb7ud5wdsnojzz"
+      
+      $.ajax({
+        url: queryURL3,
+        method: "GET"
+      }).then(function(response) {
+        console.log(response)
+        $("#localinfo").text("Enjoy local eating spots with these Hidden Gems await you!")
+
+        response.results.forEach(name => {                   
+          var gem = $("<li>").text("Name :" + name.name)
+          var geminfo = $("<p>").text("Info :" + name.snippet)
+
+
+          $("#localinfo").append(gem)
+          gem.append(geminfo)
+
+          
+        });
+
+      })
+
+}
+
+    $(".dropdown-menu a[id]").on("click", function(){
+        getTag($(this).attr("id"));
+
+    })
+
+    $(".dropdown-submenu a[id]").on("click", function(){
+        getTag($(this).attr("id"));
+
+    })
+
+
+
+})
+
+
+    
+
+    </script>
+</body>
+</html>
