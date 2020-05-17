@@ -1,4 +1,6 @@
 <html><head>
+
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>The Backpacker Assistant!</title>
@@ -10,6 +12,7 @@
 
     <style>
         .body{
+            font-family: 'Anton', sans-serif;
             background-color: rgb(157, 219, 219);
         }
         .container{
@@ -18,13 +21,13 @@
         }
         #column{
             background-color: rgb(26, 203, 235);
-            color: red;
+            color: rgb(10, 104, 33);
             padding-bottom: 50px;
             width: 400px;
             text-align: center;
         }
         .block{
-            color: red;
+            color: rgb(14, 112, 10);
             background-color: rgb(39, 231, 135);
         }
         
@@ -42,7 +45,7 @@
  <div class="container">
     <div class="hero is-primary">
         <div class="container">
-            <h1 class="title">
+            <h1 class="title is-1">
                 WELCOME TO THE <strong>BACKPACKER ASSISTANT</strong>!
             </h1>
             <h1 class="subtitle is-4">CREATED JUST FOR YOU!</h1>
@@ -82,6 +85,10 @@
                     <h4 id="city4info"></h4>
                     <h3 id="city5"></h3>
                     <h4 id="city5info"></h4>
+
+                    <input id="citySearch"></input>
+                    <button id="citySearchBtn">City Search</button>
+
             </div>
         </div>
     </div>
@@ -91,7 +98,7 @@
 
     <!-- Dropdown Menu -->
     <div class="container">
-        <h2>Simplify your search</h2>
+        <h2>ALL THE INFO YOU NEED</h2>
         <p>Choose a category to find more information</p>                             
         <div class="dropdown">
           <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Options
@@ -174,8 +181,8 @@
 
     <!-- Displays info of what to do  -->
     </div>
-    City Search
-    <div id="local" style="float: left; background-color: rgb(113, 124, 124);">
+    <h1>HERE YOU GO!</h1>
+    <div id="local" style="float: inline-end; background-color: rgb(193, 230, 230);">
       <h2 id="localinfo"></h2>
     
       
@@ -372,18 +379,18 @@ $.ajax({
     })
 
 
-        var citySearch = $("<input>")
-        var citySearchBtn = $("<button>")
-        citySearchBtn.attr("id", "citySearchBtn")
-        citySearchBtn.text("City Search")
+        // var citySearch = $("<input>")
+        // var citySearchBtn = $("<button>")
+        // citySearchBtn.attr("id", "citySearchBtn")
+        // citySearchBtn.text("City Search")
 
-        $("#cityinfo").append(citySearch)
-        $("#cityinfo").append(citySearchBtn)
+        // $("#cityinfo").append(citySearch)
+        // $("#cityinfo").append(citySearchBtn)
 
         function getTag(option){
           console.log(option);
   
-  var citySearchValue = citySearch.val()
+  var citySearchValue = $("#citySearch").val()
       // var queryURL3 = "https://www.triposo.com/api/20200405/poi.json?location_id=" + citySearchValue + "&tag_labels=character-Popular_with_locals&tag_labels=eatingout&order_by=-character-Popular_with_locals_score&fields=id,name,snippet&account=EBIJUYBE&token=x12w6bi7kpp880qub7zb7ud5wdsnojzz"
       var queryURL3 = "https://www.triposo.com/api/20200405/poi.json?location_id=" + citySearchValue + "&tag_labels=" + option +"&order_by=-score&fields=id,name,snippet&account=EBIJUYBE&token=x12w6bi7kpp880qub7zb7ud5wdsnojzz"
       
