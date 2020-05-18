@@ -30,6 +30,15 @@
             color: rgb(14, 112, 10);
             background-color: rgb(39, 231, 135);
         }
+        #recomendations{
+            text-align: center;
+        }
+        
+        .subtitle{
+            text-align: center;
+            padding-top: 20px;
+           
+        }
         
     </style>
     <!-- Dropdown Menu -->
@@ -60,6 +69,9 @@
             <div class="column">
             <div class="hero-body">
             <h1 class="subtitle is-4">SEARCH YOUR COUNTRY INFORMATION HERE</h1>
+
+<!-- ADDED COLOR AND SIZE TO THE H1 -->
+            <h1 style="color:white;" class= "subtitle is-2">SEARCH YOUR COUNTRY INFORMATION HERE</h1>
             <input id="countryname">
             <button id="countrySearchBtn">Search Now</button>
             <h2 id="country"></h2>
@@ -181,7 +193,7 @@
 
     <!-- Displays info of what to do  -->
     </div>
-    <h1>HERE YOU GO!</h1>
+    <h1 id="recomendations">HERE YOU GO!</h1>
     <div id="local" style="float: inline-end; background-color: rgb(193, 230, 230);">
       <h2 id="localinfo"></h2>
     
@@ -189,40 +201,82 @@
       </div>
 
     <div class="block">
-            <h1 class="subtitle is-4">MUSTS FOR A BACKPACKER</h1>
+            <h1 class="subtitle is-1">MUSTS FOR A BACKPACKER</h1>
             <div class="columns">
                 <div class="column">
                     <div class="card">
+                        <div class="card-content"> <h2 class="title">COMPARISON SITES</h2>
+                            <p>Here is a list of the TOP 5 comparison sites for backpackers</p>
+                            <div class="content">
+                                <ol type="A">
+                                  <li id="skyscanner"><a href="https://www.skyscanner.com">SKYSCANNER</a></li>
+                                  
+                                  <li id="kayak"><a href="https://www.kayak.com">KAYAK</a></li>
+                                  
+                                  <li id="edreams"><a href="https://www.edreams.com">EDREAMS</a></li>
+                                  
+                                  <li id="despegar"><a href="https://www.despegar.com">DESPEGAR</a></li>
+                                  
+                                  <li id="momondo"><a href="https://www.momondo.com">MOMONDO</a></li>
+                                  
+                                </ol>
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+                <div class="column">
+                    <div class="card">
                         <div class="card-content"> <h2 class="title">WHERE TO STAY</h2>
-                            <input id="cityinfo">
-                            <button class="button is-black">button</button>
+                            <p>Here is a list of the TOP 3 accomodation sites for backpackers</p>
+                            <div class="content">
+                                <ol type="A">
+                                  <li id="airbnb"><a href="https://www.airbnb.mx/">AIRBNB</a></li>
+                                  
+                                  <li id="HostelWorld"><a href="https://www.hostelworld.com">HOSTEL WORLD</a></li>
+                                  
+                                  <li id="CouchSurfing"><a href="https://www.couchsurfing.com/">COUCH SURFING</a></li>
+                                
+                                  
+                                </ol>
                         </div>
                     </div>
                 </div>
-                <div class="column">
-                    <div class="card">
-                        <div class="card-content"> <h2 class="title">WHAT TO DO</h2>
-                            <input id="cityinfotwo">
-                            <button class="button is-black">button</button>
-                        </div>
-                    </div>
                 </div>
+
                 <div class="column">
                     <div class="card">
-                        <div class="card-content"> <h2 class="title">EXTRA INFO</h2>
-                            <input id="cityinfothree">
-                            <button class="button is-black">button</button>
+                        <div class="card-content"> <h2 class="title">INSURANCE AGENCIES</h2>
+                            <p>Here is a list of the TOP 5 insurance agencies for backpackers</p>
+                            <div class="content">
+                                <ol type="A">
+                                  <li id="AllianzGlobalAssistance"><a href="https://www.allianz-assistance.com.mx">Allianz Global Assistance</a></li>
+                                  
+                                  <li id="Amex Assurance"><a href="https://aeti.americanexpress.com/travel-insurance/home.do?inav=menu_travel_protection">Amex Assurance</a></li>
+                                  
+                                  <li id="Generali Global Assistance"><a href="https://www.generalitravelinsurance.com/">Generali Global Assistance</a></li>
+                                  
+                                  <li id="Seven Corners"><a href="https://www.sevencorners.com/">Seven Corners</a></li>
+                                  
+                                  <li id="Travelex"><a href="https://www.travelex.com/">Travelex</a></li>
+                                  
+                                </ol>
                         </div>
                     </div>
                 </div>
             </div>
         
+            </div>
+        </div>
     </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
 <script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script>    
 <script src="js/MapQuest.js"></script>
 <script type="text/javascript">
+//ADDED COLOR AND FONT SIZE TO THE BUTTON   <button id="countrySearchBtn">Search Now</button> //
+var allbuttonsTags = document.querySelectorAll("button");
+allbuttonsTags[0].setAttribute("style", "background-color:blue; color:white; font-size:20px"); 
 
 //DropDown functionality
 $(document).ready(function(){
