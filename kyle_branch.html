@@ -440,7 +440,7 @@ $.ajax({
 
         $("#city5").text(response.results[4].name)
         $("#city5info").text(response.results[4].snippet)
-    })
+            })
 
 
 });
@@ -469,50 +469,89 @@ $.ajax({
         url: queryURL3,
         method: "GET"
       }).then(function(response) {
-        $("#localinfo").text("Enjoy these top 10 spots based on your search entry and check the links below for more info on your chosen city!")
 
-        if(response.more == false){
+         if(response.more == false && response.results == 0){
                 //Extends search for cities that are not found
                 $("#localinfo").text("Sorry, we could not find the information that matched your search. We hope you are able to find more info via the following links: " );
+                }  
 
-                var youtube = $("<img>").attr({
-                            src: "https://www.youtube.com/yts/img/yt_1200-vflhSIVnY.png",
-                            width : "100px",
-                            height: "100px"
-                                         }).appendTo($("<a>").attr({
-                                             href:"https://www.youtube.com/results?search_query=" + encodeURIComponent(city + " " + lCountry + " to do")}).appendTo($("#localinfo")))
-                
-                var tripadvisor = $("<img>").attr({
-                            src: "https://skift.com/wp-content/uploads/2017/06/tripadvisor-logo-e1526649519797.png",
-                            width : "100px",
-                            height: "100px"
-                                         }).appendTo($("<a>").attr({
-                                             href:"https://www.tripadvisor.com/Search?q=" + encodeURIComponent(city + " " + lCountry )}).appendTo($("#localinfo")))
-                
-                var lonelyplanet = $("<img>").attr({
-                            src: "http://2.bp.blogspot.com/--kwdxC9doQE/ULUS6jOviFI/AAAAAAAADFQ/RjFr5BbAAV8/s1600/20121126-172448-lonelyplanet.jpeg",
-                            width : "100px",
-                            height: "100px"
-                                         }).appendTo($("<a>").attr({
-                                             href:"https://www.lonelyplanet.com/search?q=" + encodeURIComponent(city + " " + lCountry )}).appendTo($("#localinfo")))
-
-                
-                    
-
-                } 
-
+        $("#localinfo").text("Enjoy these top spots based on your search entry and check the links below for more info on your chosen city!")
+       
         response.results.forEach(name => {                   
           var gem = $("<li>").text("Name :" + name.name)
           var geminfo = $("<p>").text("Info :" + name.snippet)
 
 
           $("#localinfo").append(gem)
-          gem.append(geminfo)
+          gem.append(geminfo)})
 
-          
+            //If country has not been entered
+            if($("#countryname").val().trim() === ""){
+                var youtube = $("<img>").attr({
+                            src: "https://www.youtube.com/yts/img/yt_1200-vflhSIVnY.png",
+                            width : "100px",
+                            height: "100px"
+                                         }).appendTo($("<a>").attr({
+                                             href:"https://www.youtube.com/results?search_query=" + encodeURIComponent(city + " to do")
+                                             }).appendTo($("#localinfo")))
+                
+                var tripadvisor = $("<img>").attr({
+                            src: "https://skift.com/wp-content/uploads/2017/06/tripadvisor-logo-e1526649519797.png",
+                            width : "100px",
+                            height: "100px"
+                                         }).appendTo($("<a>").attr({
+                                             href:"https://www.tripadvisor.com/Search?q=" + encodeURIComponent(city)
+                                             }).appendTo($("#localinfo")))
+                
+                var lonelyplanet = $("<img>").attr({
+                            src: "http://2.bp.blogspot.com/--kwdxC9doQE/ULUS6jOviFI/AAAAAAAADFQ/RjFr5BbAAV8/s1600/20121126-172448-lonelyplanet.jpeg",
+                            width : "100px",
+                            height: "100px"
+                                         }).appendTo($("<a>").attr({
+                                             href:"https://www.lonelyplanet.com/search?q=" + encodeURIComponent(city)
+                                             }).appendTo($("#localinfo")))
+             }
+
+            else{
+                var youtube = $("<img>").attr({
+                            src: "https://www.youtube.com/yts/img/yt_1200-vflhSIVnY.png",
+                            width : "100px",
+                            height: "100px"
+                                         }).appendTo($("<a>").attr({
+                                             href:"https://www.youtube.com/results?search_query=" + encodeURIComponent(city + " " + lCountry + " to do")
+                                             }).appendTo($("#localinfo")))
+                
+                var tripadvisor = $("<img>").attr({
+                            src: "https://skift.com/wp-content/uploads/2017/06/tripadvisor-logo-e1526649519797.png",
+                            width : "100px",
+                            height: "100px"
+                                         }).appendTo($("<a>").attr({
+                                             href:"https://www.tripadvisor.com/Search?q=" + encodeURIComponent(city + " " + lCountry )
+                                             }).appendTo($("#localinfo")))
+                
+                var lonelyplanet = $("<img>").attr({
+                            src: "http://2.bp.blogspot.com/--kwdxC9doQE/ULUS6jOviFI/AAAAAAAADFQ/RjFr5BbAAV8/s1600/20121126-172448-lonelyplanet.jpeg",
+                            width : "100px",
+                            height: "100px"
+                                         }).appendTo($("<a>").attr({
+                                             href:"https://www.lonelyplanet.com/search?q=" + encodeURIComponent(city + " " + lCountry )
+                                             }).appendTo($("#localinfo")))
+
+                }
+
+
         });
 
-      })
+        
+                
+                
+                    
+
+                
+
+        
+
+      
 
 }
 
