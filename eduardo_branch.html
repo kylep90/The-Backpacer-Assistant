@@ -366,7 +366,36 @@
 <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
 <script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script>    
 <script src="js/MapQuest.js"></script>
+<script>
 
+    // Eduardo's additions
+    MapQuest.apiKey= "eM39yPb4tOGGelWAM4iuzTpK5S8d2Ike";
+    function refreshMap(pCountry,pCity){
+
+
+    // This line call the function that is defined inside the library "js/MapQuest.js"
+    // The files usually have the same name as the variables to prevent looking for 
+    // hours the name of a variable
+    MapQuest.getAddressCoordinates( pCity + ", " + pCountry, function(pResponse){
+        console.log(pResponse); 
+        console.log(this);
+        $("#response").text(JSON.stringify(pResponse,null,4)); 
+        L.mapquest.key = MapQuest.apiKey;
+        // We create an element to put the map
+        var lMapElement$ = $('<div id="map" style="width: 100%; height: 530px;"></div>')
+        // We replace the element that is in teh DOM by the element we just have created above
+        $( '#map' ).replaceWith( lMapElement$ );
+        var map = L.mapquest.map('map', {      
+            // * We retrieve the data from the response and send is as a parameter
+            // of the geolocation to mapquest.js
+            center: [pResponse.lat, pResponse.lng],
+            layers: L.mapquest.tileLayer('map'),
+            zoom: 12
+        });
+        map.addControl(L.mapquest.control());
+        });
+    }
+</script>
 <script type="text/javascript">
 //ADDED COLOR AND FONT SIZE TO THE BUTTON   <button id="countrySearchBtn">Search Now</button> //
 
@@ -490,25 +519,7 @@ $(document).ready(function(){
                                         UnsplashSource.createImage( '80x60', [ pResponse[0].name, pResponse[0].capital, 'landmark' ] )
                                     )
                             }
-                            // Eduardo's additions
-                            MapQuest.apiKey= "eM39yPb4tOGGelWAM4iuzTpK5S8d2Ike";
-                            // This line call the function that is defined inside the library "js/MapQuest.js"
-                            // The files usually have the same name as the variables to prevent looking for 
-                            // hours the name of a variable
-                            MapQuest.getAddressCoordinates( pResponse[0].capital + ", " + pResponse[0].name, function(pResponse){
-                                console.log(pResponse); 
-                                console.log(this);
-                                $("#response").text(JSON.stringify(pResponse,null,4)); 
-                                L.mapquest.key = MapQuest.apiKey ;
-                                var map = L.mapquest.map('map', {
-                                    // * We retrieve the data from the response and send is as a parameter
-                                    // of the geolocation to mapquest.js
-                                    center: [pResponse.lat, pResponse.lng],
-                                    layers: L.mapquest.tileLayer('map'),
-                                    zoom: 12
-                                });
-                                map.addControl(L.mapquest.control());
-                            });  
+                            refreshMap(pResponse[0].name,pResponse[0].capital);
 //Kyle's addtions
 var queryURL2 = "https://www.triposo.com/api/20200405/location.json?part_of=" + lCountry + "&tag_labels=city&count=10&fields=id,name,score,snippet&order_by=-score&account=EBIJUYBE&token=x12w6bi7kpp880qub7zb7ud5wdsnojzz"
 
@@ -535,7 +546,9 @@ $.ajax({
         $("#city5info").text(response.results[4].snippet)
     })
 
-
+        $( "#citySearch" ).on( 'click', function(){
+            refreshMap( lCountry, $( '#citySearch' ).val() );
+        } );
         // var citySearch = $("<input>")
         // var citySearchBtn = $("<button>")
         // citySearchBtn.attr("id", "citySearchBtn")
