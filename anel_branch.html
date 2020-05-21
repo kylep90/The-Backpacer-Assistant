@@ -12,34 +12,83 @@
 
     <style>
 
+@keyframes headerFadeIn{
+        0% {
+            transform: translateX(-40px);
+            opacity: 0;
+        }
+        100% {
+            transform: none;
+            opacity: 1;
+        }
+    }
+        .h1 {
+            margin-bottom: 0px;
+            text-align: center;
+            transform: translateX(-40px);
+            opacity: 0;
+            animation: headerFadeIn 0.7s;
+            animation-fill-mode: forwards;
+            animation-play-state: running;
+            h1:nth-child(2)
+            {
+                animation-delay:0.7s;
+            }
+
+        }
+       
+               
+            
+
         .body{
             font-family: 'Anton', sans-serif;
             background-color: rgb(157, 219, 219);
+
         }
+
+        body {
+    min-height: 100vh;
+    background: radial-gradient(ellipse at bottom,
+                                 #3d0155 0%, rgb(46, 1, 22) 100%);
+}
+
+
         .container{
             padding-top: 0px;
             text-align: center;
         }
         #column{
-            background-color: rgb(26, 203, 235);
-            color: rgb(10, 104, 33);
+            background-color: rgb(229, 240, 198);
+            color: rgb(24, 10, 104);
             padding-bottom: 50px;
             width: 400px;
             text-align: center;
         }
         .block{
-            color: rgb(14, 112, 10);
-            background-color: rgb(39, 231, 135);
+            color: rgb(8, 6, 100);
+            background-color: rgb(1, 150, 76);
         }
         #recomendations{
             text-align: center;
         }
-
+        
         .subtitle{
             text-align: center;
             padding-top: 20px;
            
         }
+
+        .carousel-item {
+            float: left;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 0px;
+            background-color: rgba(128, 128, 128, 0.247);
+            color: white;
+            margin: 0px;
+                }
         
     </style>
     <!-- Dropdown Menu -->
@@ -52,11 +101,64 @@
 </head>
 
 <body class="body">
-
  <div class="container">
+
+    <nav class="navbar is-success" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="https://bulma.io">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQubyohs9WjAdGuJm3yDhA5Q4D3JlgNZkQWyFnuFMJGV10gExts&usqp=CAU" width="50" height="28">
+          </a>
+      
+          <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+      
+        <div id="navbarBasicExample" class="navbar-menu">
+          <div class="navbar-start">
+            <a class="navbar-item">
+              HOMEPAGE
+            </a>
+      
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link">
+                More
+              </a>
+      
+              <div class="navbar-dropdown">
+            
+                <a href="http://www.ebizmba.com/articles/travel-websites" class="navbar-item">
+                    COMPARISON SITES BLOGS
+                </a>
+                <a href="https://alanxelmundo.com/" class="navbar-item">
+                    MEET NEW TRAVEL BLOGERS
+                </a>
+                <hr class="navbar-divider">
+                <a href="https://www.forbes.com/sites/christopherelliott/2018/08/18/the-best-and-worst-travel-insurance-companies/#43efd78b4fc2" class="navbar-item">
+                    INSURANCE AGENCIES RANKING
+                </a>
+                <a class="navbar-item">
+                    ABOUT US
+                  </a>
+              </div>
+            </div>
+          </div>
+      
+          
+        </div>
+      </nav>
+
+
+
+
+
+
+
     <div class="hero is-primary">
         <div class="container">
-            <h1 class="title is-1">
+            <h1 class="title is-1 h1">
                 WELCOME TO THE <strong>BACKPACKER ASSISTANT</strong>!
             </h1>
             <h1 class="subtitle is-4">CREATED JUST FOR YOU!</h1>
@@ -64,16 +166,16 @@
         </div>
         <div id="countrypics"></div>
     </div>
- 
+
 
     <div class="block">
         <div class="columns">
             <div class="column">
             <div class="hero-body">
-            <h1 class="subtitle is-4">SEARCH YOUR COUNTRY INFORMATION HERE</h1>
+            
 
 <!-- ADDED COLOR AND SIZE TO THE H1 -->
-            <h1 style="color:white;" class= "subtitle is-2">SEARCH YOUR COUNTRY INFORMATION HERE</h1>
+            <h1 style="color:rgb(241, 241, 241);" class= "subtitle is-2">SEARCH YOUR COUNTRY INFORMATION HERE</h1>
             <input id="countryname">
             <button id="countrySearchBtn">Search Now</button>
             <h2 id="country"></h2>
@@ -99,8 +201,10 @@
                     <h4 id="city4info"></h4>
                     <h3 id="city5"></h3>
                     <h4 id="city5info"></h4>
-                <input id="citySearch"></input>
+
+                    <input id="citySearch"></input>
                     <button id="citySearchBtn">City Search</button>
+
             </div>
         </div>
     </div>
@@ -110,8 +214,8 @@
 
     <!-- Dropdown Menu -->
     <div class="container">
-        <h2>ALL THE INFO YOU NEED</h2>
-        <p>Choose a category to find more information</p>                             
+        <h2 style="color:rgb(241, 241, 241);">ALL THE INFO YOU NEED</h2>
+        <p style="color:rgb(241, 241, 241);">Choose a category to find more information</p>                             
         <div class="dropdown">
           <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Options
           <span class="caret"></span></button>
@@ -189,20 +293,19 @@
             </li>
           </ul>
         </div>
-        </div>      
+     
 
     <!-- Displays info of what to do  -->
     </div>
-    <h1 id="recomendations">HERE YOU GO!</h1>
+    <h1 style="color:rgb(241, 241, 241);" id="recomendations">HERE YOU GO!</h1>
     <div id="local" style="float: inline-end; background-color: rgb(193, 230, 230);">
       <h2 id="localinfo"></h2>
     
       
       </div>
 
-
     <div class="block">
-            <h1 class="subtitle is-1">MUSTS FOR A BACKPACKER</h1>
+            <h1 style="color:rgb(241, 241, 241);" class="subtitle is-1">MUSTS FOR A BACKPACKER</h1>
             <div class="columns">
                 <div class="column">
                     <div class="card">
@@ -221,9 +324,9 @@
                                   <li id="momondo"><a href="https://www.momondo.com">MOMONDO</a></li>
                                   
                                 </ol>
-                            </div>
                         </div>
                     </div>
+                </div>
                 </div>
 
                 <div class="column">
@@ -240,9 +343,9 @@
                                 
                                   
                                 </ol>
-                            </div>
                         </div>
                     </div>
+                </div>
                 </div>
 
                 <div class="column">
@@ -262,10 +365,47 @@
                                   <li id="Travelex"><a href="https://www.travelex.com/">Travelex</a></li>
                                   
                                 </ol>
-                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
+
+
+            <br>
+</div>
+</div>
+
+
+<div class='carousel carousel-animated carousel-animate-slide'>
+    <div class='carousel-container'>
+       <div class='carousel-item has-background is-active'>
+         <img class="is-background" src="https://theplanetd.com/images/adventure-travel-quotes-daring-418x627.jpg" alt="" width="231" height="100" />
+       </div>
+       <div class='carousel-item has-background'>
+         <img class="is-background" src="https://theplanetd.com/images/quotes-for-travelers-footprints-418x627.jpg" alt="" width="220" height="100" />
+         <div class="title"> <a href="https://lasongbox.com" target="_blank"></a></div>
+       </div>
+       <div class='carousel-item has-background'>
+         <img class="is-background" src="https://theplanetd.com/images/Best-Travel-Quotes-travel-makes-one-modest-418x627.jpg" alt="" width="220" height="100" />
+       </div>
+       <div class='carousel-item has-background'>
+        <img class="is-background" src="https://theplanetd.com/images/inspirational-travel-quotes-saint-augustine-418x627.jpg" alt="" width="220" height="100" />
+      </div>
+      <div class='carousel-item has-background'>
+        <img class="is-background" src="https://theplanetd.com/images/best-travel-quotes-jrr-tolkein-418x627.jpg" alt="" width="231" height="100" />
+      </div>
+      
+</div>
+<br>
+
+
+<div class="footer">
+    <footer>
+        <p>THE BACKPACKER ASSISTANT.INC</p>
+        <p>Copyright © BACKPACKERASSISTANT 2020
+            </p>
+      </footer>
+</div>
 
             </div>
         </div>
@@ -274,12 +414,12 @@
 <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
 <script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script>    
 <script src="js/MapQuest.js"></script>
+<script type="text/javascript">
 
-    <script type="text/javascript">
+
 //ADDED COLOR AND FONT SIZE TO THE BUTTON   <button id="countrySearchBtn">Search Now</button> //
 var allbuttonsTags = document.querySelectorAll("button");
-allbuttonsTags[0].setAttribute("style", "background-color:blue; color:white; font-size:20px"); 
-
+allbuttonsTags[0].setAttribute("style", "background-color:white; color:dark-blue; font-size:15px"); 
 
 //DropDown functionality
 $(document).ready(function(){
@@ -346,7 +486,10 @@ $(document).ready(function(){
         $( document ).ready( function(){
             $( "#countrySearchBtn" )
                 .on( "click", function( pEvent ){
-                    var lCountry = $( "#countryname" ).val();
+                    var countryInput = $("#countryname").val();
+                    var lCountry = countryInput[0].toUpperCase() + countryInput.slice(1); //Capitalises the first letter
+                
+                    //$( "#countryname" ).val();
                     var lQueryURL = "https://restcountries.eu/rest/v2/name/" + lCountry;
                     var lNumberOfImages = 3;
 
@@ -355,7 +498,8 @@ $(document).ready(function(){
                         method: "GET"
                     })
                         .then( function( pResponse ) {
-                            //console.log( pResponse );
+
+
 //Gives basic info on country
                             $( "#country" )
                                 .text( "Country: " + pResponse[0].name );
@@ -390,8 +534,7 @@ $(document).ready(function(){
                                         UnsplashSource.createImage( '80x60', [ pResponse[0].name, pResponse[0].capital, 'landmark' ] )
                                     )
                             }
-
-                             // Eduardo's additions
+                            // Eduardo's additions
                             MapQuest.apiKey= "eM39yPb4tOGGelWAM4iuzTpK5S8d2Ike";
                             // This line call the function that is defined inside the library "js/MapQuest.js"
                             // The files usually have the same name as the variables to prevent looking for 
@@ -437,20 +580,30 @@ $.ajax({
     })
 
 
-       // var citySearch = $("<input>")
-        // var citySearchBtn = $("<button>")
-        // citySearchBtn.attr("id", "citySearchBtn")
-        // citySearchBtn.text("City Search")
+});
 
-        // $("#cityinfo").append(citySearch)
-        // $("#cityinfo").append(citySearchBtn)
 
+                        });
+                })
+    $(".dropdown-menu a[id]").on("click", function(){
+        getTag($(this).attr("id"));
+
+    })
+
+    $(".dropdown-submenu a[id]").on("click", function(){
+        getTag($(this).attr("id"));
+
+    })
         function getTag(option){
+
+            
           console.log(option);
   
-   var citySearchValue = $("#citySearch").val()
-      // var queryURL3 = "https://www.triposo.com/api/20200405/poi.json?location_id=" + citySearchValue + "&tag_labels=character-Popular_with_locals&tag_labels=eatingout&order_by=-character-Popular_with_locals_score&fields=id,name,snippet&account=EBIJUYBE&token=x12w6bi7kpp880qub7zb7ud5wdsnojzz"
-      var queryURL3 = "https://www.triposo.com/api/20200405/poi.json?location_id=" + citySearchValue + "&tag_labels=" + option +"&order_by=-score&fields=id,name,snippet&account=EBIJUYBE&token=x12w6bi7kpp880qub7zb7ud5wdsnojzz"
+    var cityInput = $("#citySearch").val();
+    var city = cityInput[0].toUpperCase() + cityInput.slice(1);
+    console.log(city)
+      
+      var queryURL3 = "https://www.triposo.com/api/20200405/poi.json?location_id=" + city + "&tag_labels=" + option +"&order_by=-score&fields=id,name,snippet&account=EBIJUYBE&token=x12w6bi7kpp880qub7zb7ud5wdsnojzz"
       
       $.ajax({
         url: queryURL3,
@@ -458,6 +611,9 @@ $.ajax({
       }).then(function(response) {
         console.log(response)
         $("#localinfo").text("Enjoy these spots based on your search entry!")
+
+        if(response.more == false){
+                console.log("NO RESULTS found")}
 
         response.results.forEach(name => {                   
           var gem = $("<li>").text("Name :" + name.name)
@@ -474,103 +630,7 @@ $.ajax({
 
 }
 
-    $(".dropdown-menu a[id]").on("click", function(){
-        getTag($(this).attr("id"));
-        
-    })
 
-    $(".dropdown-submenu a[id]").on("click", function(){
-        getTag($(this).attr("id"));
-        
-
-    })
-
-
-
-});
-
-
-                        });
-                })
-
-// //Kyles addtions
-//                 var queryURL2 = "https://www.triposo.com/api/20200405/location.json?part_of=" + lCountry + "&tag_labels=city&count=10&fields=id,name,score,snippet&order_by=-score&account=EBIJUYBE&token=x12w6bi7kpp880qub7zb7ud5wdsnojzz"
-
-// $.ajax({
-//         url: queryURL2,
-//         method: "GET"
-//       }).then(function(response) {
-//         console.log(response)
-
-//         $("#cityinfolist").text("Top 5 cities in " + lCountry)
-//         $("#city1").text(response.results[0].name)
-//         $("#city1info").text(response.results[0].snippet)
-
-//         $("#city2").text(response.results[1].name)
-//         $("#city2info").text(response.results[1].snippet)
-
-//         $("#city3").text(response.results[2].name)
-//         $("#city3info").text(response.results[2].snippet)
-
-//         $("#city4").text(response.results[3].name)
-//         $("#city4info").text(response.results[3].snippet)
-
-//         $("#city5").text(response.results[4].name)
-//         $("#city5info").text(response.results[4].snippet)
-//     })
-
-
-//         var citySearch = $("<input>")
-//         var citySearchBtn = $("<button>")
-//         citySearchBtn.attr("id", "citySearchBtn")
-//         citySearchBtn.text("City Search")
-
-//         $("#cityinfo").append(citySearch)
-//         $("#cityinfo").append(citySearchBtn)
-
-//         function getTag(option){
-//           console.log(option);
-  
-//   var citySearchValue = citySearch.val()
-//       // var queryURL3 = "https://www.triposo.com/api/20200405/poi.json?location_id=" + citySearchValue + "&tag_labels=character-Popular_with_locals&tag_labels=eatingout&order_by=-character-Popular_with_locals_score&fields=id,name,snippet&account=EBIJUYBE&token=x12w6bi7kpp880qub7zb7ud5wdsnojzz"
-//       var queryURL3 = "https://www.triposo.com/api/20200405/poi.json?location_id=" + citySearchValue + "&tag_labels=" + option +"&order_by=-score&fields=id,name,snippet&account=EBIJUYBE&token=x12w6bi7kpp880qub7zb7ud5wdsnojzz"
-      
-//       $.ajax({
-//         url: queryURL3,
-//         method: "GET"
-//       }).then(function(response) {
-//         console.log(response)
-//         $("#localinfo").text("Enjoy local eating spots with these Hidden Gems await you!")
-
-//         response.results.forEach(name => {                   
-//           var gem = $("<li>").text("Name :" + name.name)
-//           var geminfo = $("<p>").text("Info :" + name.snippet)
-
-
-//           $("#localinfo").append(gem)
-//           gem.append(geminfo)
-
-          
-//         });
-
-//       })
-
-// }
-
-//     $(".dropdown-menu a[id]").on("click", function(){
-//         getTag($(this).attr("id"));
-
-//     })
-
-//     $(".dropdown-submenu a[id]").on("click", function(){
-//         getTag($(this).attr("id"));
-
-//     })
-
-
-
-// });
-        // } );
     </script>
     
 
