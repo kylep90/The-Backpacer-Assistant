@@ -15,7 +15,7 @@ var MapQuest = {
         // !! we use this because some times the API key may have special characters
         // !! this is also used as a security redundance for special characters on the search input
         // TODO : Sanitize search inputs
-        var lUrl = "http://www.mapquestapi.com/geocoding/v1/address?key=" + encodeURIComponent(this.apiKey) + "&location=" + encodeURIComponent(pAddress);
+        var lUrl = "https://www.mapquestapi.com/geocoding/v1/address?key=" + encodeURIComponent(this.apiKey) + "&location=" + encodeURIComponent(pAddress);
         // !! --------------------------------------------------------------------------
         // SECTION JQUERY AJAX GET  [2020-05-15T06:09:47.762Z
         // SYNTAX
